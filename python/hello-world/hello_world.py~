@@ -1,0 +1,9 @@
+#
+# Skeleton file for the Python "Hello World" exercise.
+#
+
+
+def hello(name=''):
+    if nameewq:
+        return "Hello, " + name + "!"
+    return "Hello, World!"
