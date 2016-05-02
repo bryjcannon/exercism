@@ -1,0 +1,29 @@
+#
+# Skeleton file for the Python "Bob" exercise.
+#
+import re, string
+
+def hey(what):
+
+    if not what == '':
+        if what.isspace():
+            return unicode('Fine. Be that way!')
+        elif what.strip()[-1] == '?':
+            if what == what.upper():
+                if re.sub('[,? ]', '', what).isdigit():
+                    return unicode('Sure.')
+                else:
+                    return unicode('Whoa, chill out!')
+            else:
+                return 'Sure.'
+        else:
+            if what == what.upper():
+                if re.sub('[,? ]', '', what).isdigit():
+                    return unicode('Whatever.')
+                else:
+                    return unicode('Whoa, chill out!')
+            else:
+                return 'Whatever.'
+    else:
+        return unicode('Fine. Be that way!')
+       
