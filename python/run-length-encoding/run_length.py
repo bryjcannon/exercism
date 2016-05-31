@@ -21,7 +21,7 @@ def encode(code):
                 count = 1
                 letter = next                
             else:
-                print "Errorz"
+                print "Errorz1"
                 
         except:
             if code[position] == code[position-1]:
@@ -34,5 +34,51 @@ def encode(code):
     return result2
             
                                       
+#try to clean this up at some point...
+def decode(code):
+    
+    result = []
+    
+      
+    count = '1'
+    item = None
+    
+    if code[0].isdigit():
+        count = code[0]
+    elif code[0].isalpha():
+        item = code[0]
+        result.append((count, item))
+    
+    for position in xrange(1, len(code)): 
+           
 
-#def decode():
+        previous = code[position-1]
+        current = code[position]
+                
+        if previous.isdigit() and current.isdigit():
+            count += current
+        elif previous.isdigit() and current.isalpha():
+            item = current
+            result.append((count, item))
+        elif previous.isalpha() and current.isalpha():
+            count = '1'
+            item = current
+            result.append((count, item))
+        elif previous.isalpha() and current.isdigit():
+            count = current
+        elif previous.isdigit() and current.isspace():
+            result.append((count, ' '))
+        elif previous.isalpha() and current.isspace():
+            count = '1'
+            item = current
+            result.append((count, item))
+        elif previous.isspace() and current.isalpha():
+            count = '1'
+            result.append((count, current))
+        elif previous.isspace() and current.isdigit():
+            count = current
+        else:
+            result.append(('1', 'ER'))
+                            
+    result2 = ''.join([int(num) * letter for num, letter in result])
+    return result2    
